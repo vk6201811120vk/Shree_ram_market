@@ -1,0 +1,1433 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHREE RAM MARKET - प्रोडक्ट स्थायित्व अपडेट | फाइनल फिक्स</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================== 🎨 CSS Styles: अट्रैक्टिव डिज़ाइन 🎨 ================== */
+:root {
+  --primary-color: #ff5c33; /* नारंगी/लाल (मुख्य रंग) */
+  --secondary-color: #4CAF50; /* हरा (डिस्काउंट/सफलता) */
+  --admin-color: #5D3FD3; /* बैंगनी (एडमिन/डिज़ाइन) */
+  --bg-color: #f7f7f7;
+  --text-color: #333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.content-section {
+    display: none; 
+    padding: 20px;
+    min-height: 80vh;
+    padding-bottom: 70px;
+}
+/* ================== ⬆️ HEADER & NAV ⬆️ ================== */
+header {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+#adminIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: white;
+  color: var(--primary-color);
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 14px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+nav.top, nav.bottom {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 8px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 5;
+  width: 100%;
+}
+nav.top { 
+    position: sticky; 
+    top: 0; 
+}
+nav.bottom {
+  bottom: 0;
+  position: fixed;
+}
+nav button {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 25px; 
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+nav button:hover { background: #ff784e; transform: translateY(-2px); }
+
+/* ================== 🧠 SMART LIST STYLES 🧠 ================== */
+#smartListContainer {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.smart-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+#catalogAdminIcon {
+    background: var(--admin-color);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#smartSearchInput {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.suggestions-box {
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    position: absolute; 
+    width: calc(100% - 40px); 
+    z-index: 10;
+}
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: var(--text-color);
+}
+.suggestion-item:last-child { border-bottom: none; }
+.suggestion-item:hover { background: #f0f0f0; }
+
+#bulkOrderList {
+    margin-top: 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 50px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.bulk-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fcfcfc;
+    border-bottom: 1px dashed #eee;
+    padding: 10px 0;
+    font-size: 15px;
+    transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out, padding 0.3s ease-in-out; 
+    max-height: 60px; 
+    opacity: 1; 
+    overflow: hidden; 
+}
+.bulk-item:last-child { border-bottom: none; }
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.item-controls input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    margin: 0;
+}
+.item-controls .unit-display {
+    width: 40px;
+    text-align: right;
+    font-size: 12px;
+    color: #555;
+}
+.item-controls .delete-btn {
+    background: none;
+    border: none;
+    color: #D32F2F;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px;
+}
+#orderSummaryBox {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--secondary-color);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+#grandTotalDisplay {
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+/* ================== 📦 PRODUCT GRID (YouTube Style) ================== */
+#productContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  gap: 20px; 
+  padding: 0px; 
+}
+.product {
+  background: white;
+  padding: 0; 
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: left; 
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #eee;
+  overflow: hidden; 
+}
+.product:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.15); }
+.product img {
+  width: 100%;
+  height: 150px; 
+  object-fit: cover; 
+  margin-bottom: 0; 
+  display: block;
+  cursor: pointer; 
+}
+.product-details {
+    padding: 12px;
+}
+.product-details h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #222;
+    cursor: pointer; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.price-box {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.original-price {
+    color: #999;
+    font-size: 0.8em;
+    text-decoration: line-through;
+    display: block;
+}
+.discounted-price {
+    color: var(--secondary-color);
+    font-size: 1.2em;
+    display: block;
+    cursor: pointer; 
+}
+.discount-badge {
+    background: var(--secondary-color);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.75em;
+    margin-bottom: 10px; 
+    display: inline-block;
+}
+button.order-btn {
+  margin-top: 5px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%; 
+  box-sizing: border-box;
+}
+button.order-btn:hover { background: #ff784e; }
+/* ================== (CSS अपडेट पूरा हुआ) ================== */
+
+
+/* Dynamic Order Styles */
+.order-summary {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--primary-color);
+}
+.order-summary h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+/* ================== 📝 MODAL & FORMS 📝 ================== */
+.modal-overlay {
+  display: none;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+.form-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 450px;
+  margin: 50px auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+input:not([type="number"]), select, textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+input[type="file"] {
+    padding: 5px; 
+}
+button.action-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  font-weight: 600;
+}
+button.action-btn:hover { background: #ff784e; }
+button.close-btn {
+  background: #ccc;
+  color: var(--text-color);
+  margin-left: 10px;
+}
+button.close-btn:hover { background: #bbb; }
+/* Admin Specific */
+#adminMenu button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+#printOrders { background: #00796B; } 
+#addProdBtn { background: var(--secondary-color); } 
+#delProdBtn { background: #D32F2F; } 
+#updateOrderStatusBtn { background: #FF9800; } /* NEW Color */
+#removeOrderBtn { background: #9C27B0; }
+#catalogSettingsBtn { background: #00AEEF; } 
+/* ================== 📝 Buy Product List Section Styles 📝 ================== */
+.buy-list-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.buy-list-card textarea {
+    min-height: 250px;
+    font-size: 16px;
+    line-height: 1.6;
+    border: 2px solid var(--primary-color);
+}
+
+
+/* ================== ⬇️ FOOTER ⬇️ ================== */
+footer {
+  background: var(--text-color);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  SHREE RAM MARKET 🛒 (श्री राम मार्केट)
+  <div id="adminIcon">🔑</div>
+</header>
+
+<nav class="top">
+  <button onclick="showSection('home-section')">🏠 होम (Home)</button>
+  <button onclick="showSection('buy-list-section')">📝 Buy Product List</button> 
+  <button onclick="showSection('help-section')">❓ सहायता (Help)</button>
+  <button onclick="showSection('privacy-section')">📜 गोपनीयता-शर्तें (Privacy-T&C)</button>
+</nav>
+
+<div id="main-content-area">
+    
+    <div class="content-section" id="home-section" style="display: block;">
+        
+        <div class="smart-list-header">
+            <h2>🛒 इंस्टेंट ग्रोसरी लिस्ट (Instant Grocery List)</h2>
+            <div id="catalogAdminIcon" onclick="openAdminCatalogModal()">🔑 कैटलॉग ऐड/प्राइस (Admin)</div>
+        </div>
+        <div id="smartListContainer">
+            
+            <input 
+                type="text" 
+                id="smartSearchInput" 
+                placeholder="प्रोडक्ट का नाम लिखें (e.g., चीनी, आटा, पनीर)" 
+                autocomplete="off"
+                oninput="showSuggestions()"
+            >
+            <div id="searchSuggestions" class="suggestions-box"></div>
+            
+            <div id="bulkOrderList">
+                <p id="emptyListMsg" style="text-align:center; color:#888; padding: 20px;">लिस्ट खाली है। आइटम जोड़ना शुरू करें।</p>
+            </div>
+
+            <div id="orderSummaryBox">
+                <p>कुल योग (Total Price): <span id="grandTotalDisplay">₹0.00</span></p>
+                <button 
+                    id="proceedToOrderBtn" 
+                    class="action-btn" 
+                    onclick="openFinalOrderModal('smart')" 
+                    style="width:100%; margin-top:15px; background:var(--secondary-color);"
+                >
+                    ऑर्डर और पता भरें (Proceed to Order Form)
+                </button>
+            </div>
+        </div>
+        
+        <h2>अपलोड किए गए प्रोडक्ट्स (Uploaded Products)</h2>
+        <div id="productContainer"></div>
+    </div>
+    
+    <div class="content-section" id="buy-list-section">
+        <h2>📝 Buy Product List</h2>
+        <p>यहां आप अपनी जरूरत के **800** प्रोडक्ट नाम तक लिख सकते हैं। कृपया प्रत्येक आइटम को एक नई लाइन में लिखें।</p>
+        <div class="buy-list-card">
+            <textarea 
+                id="freeFormList" 
+                placeholder="उदा. (Example):&#10;1kg चीनी&#10;500g धनिया पाउडर&#10;3 पीस लाइफबॉय साबुन&#10;..."
+                maxlength="8000"
+                oninput="calculateFreeFormTotal()" ></textarea>
+            
+            <p style="font-size: 18px; font-weight: 700; margin-top: 15px;">
+                अनुमानित कुल योग (Estimated Total): 
+                <span id="freeFormTotalDisplay" style="color: var(--primary-color);">₹0.00</span>
+            </p>
+            <button 
+                id="proceedToFreeFormOrderBtn" 
+                class="action-btn" 
+                onclick="openFinalOrderModal('freeform')" 
+                style="width:100%; margin-top:15px; background:var(--primary-color);"
+            >
+                ऑर्डर फॉर्म पर जाएँ (Proceed to Order Form)
+            </button>
+        </div>
+    </div>
+    <div class="content-section" id="orders-section">
+        <h2>📦 आपके ऑर्डर्स (Your Orders)</h2>
+        <p>यहाँ आपके पिछले और वर्तमान ऑर्डर्स की स्थिति दिखाई देगी।</p>
+        <div id="myOrdersContainer">
+            </div>
+    </div>
+    
+    <div class="content-section" id="help-section">
+        <h2>❓ सहायता केंद्र (Help Center)</h2>
+        <p>किसी भी समस्या के लिए 24/7 कस्टमर सपोर्ट।</p>
+        <p>मोबाइल: 9905826407 | ईमेल: help@shreerammarket.com</p>
+    </div>
+
+    <div class="content-section" id="privacy-section">
+        <h2>📜 गोपनीयता नीति और नियम व शर्तें (Privacy & T&C)</h2>
+        <p>आपकी व्यक्तिगत जानकारी हमारे पास सुरक्षित है। हमारे नियम व शर्तें जानने के लिए यहाँ पढ़ें।</p>
+    </div>
+    
+    <div class="content-section" id="notes-section">
+        <h2>📝 महत्वपूर्ण नोट्स (Important Notes)</h2>
+        <p>बाजार में नए ऑफर और ताज़ा ख़बरें यहाँ देखें!</p>
+        <div style="background:#fff; padding:15px; border-radius:10px; margin-top:15px;">
+            <h4>नया! ऑर्गेनिक सब्जियाँ उपलब्ध हैं! (Organic Veggies Available!)</h4>
+            <p>आज से हमने अपनी सूची में ताज़ी ऑर्गेनिक सब्जियाँ जोड़ी हैं।</p>
+        </div>
+    </div>
+
+    <div class="content-section" id="delivery-section">
+        <h2>🚚 डिलीवरी की जानकारी (Delivery Information)</h2>
+        <p>हम 24-48 घंटों के भीतर डिलीवरी करते हैं। डिलीवरी का समय सुबह 9 बजे से शाम 6 बजे तक है।</p>
+    </div>
+</div>
+
+<nav class="bottom">
+  <button onclick="showSection('notes-section')">📝 नोट्स (Notes)</button>
+  <button onclick="showSection('orders-section'); loadMyOrders();">📦 ऑर्डर्स (Orders)</button>
+  <button onclick="showSection('delivery-section')">🚚 डिलीवरी कब होगी (Delivery Info)</button>
+</nav>
+
+<div class="modal-overlay" id="orderFormModal">
+  <div class="form-box">
+    <h3 id="orderTitle">ऑर्डर फॉर्म (Order Form)</h3>
+    <p id="modalPriceRow">
+        मूल्य (Price): <span id="modalPriceDisplay"></span>
+        <span id="singleQtyUnitSelector">
+            <input type="number" id="custQuantity" placeholder="मात्रा" min="1" value="1" style="width: 60px; margin: 0 5px; padding: 5px;" required>
+            <select id="unitSelector" style="width: 80px; padding: 5px; margin: 0; display: inline-block;">
+                <option value="Piece">Piece</option>
+            </select>
+        </span>
+    </p>
+    
+    <div id="bulkOrderSummaryInModal" style="margin-bottom: 15px; padding: 10px; border: 1px dashed #ccc; display:none;">
+        <h4 style="margin-top:0;">आपका ग्रोसरी ऑर्डर (Your Grocery Order)</h4>
+        <div id="bulkOrderDetailsList"></div>
+        <p style="font-weight:bold; margin-bottom:0;">कुल बिल (Total Bill): <span id="modalBulkTotalDisplay"></span></p>
+    </div>
+
+    <div id="freeFormListSummaryInModal" style="margin-bottom: 15px; padding: 10px; border: 1px dashed #ccc; display:none;">
+        <h4 style="margin-top:0;">आपकी खरीददारी सूची (Your Product List)</h4>
+        <p style="font-size: 14px; white-space: pre-wrap;" id="modalFreeFormListDisplay"></p>
+        <p style="font-weight:bold; margin-bottom:0;">अनुमानित बिल (Estimated Bill): 
+            <span id="modalFreeFormPriceDisplay" style="color: var(--primary-color);">₹0.00</span>
+        </p>
+        <p style="font-weight:bold; margin-bottom:0; color: #D32F2F;" id="freeFormTBDMessage">
+            *नोट: यह मूल्य अनुमानित है। अंतिम मूल्य डिलीवरी के समय बताया जाएगा। (Final price will be confirmed upon delivery.)
+        </p>
+    </div>
+
+
+    <input type="text" id="custName" placeholder="पूरा नाम (Full Name)" required>
+    <input type="tel" id="custMobile" placeholder="मोबाइल नंबर (Mobile Number)" required>
+    <input type="text" id="custFlat" placeholder="फ्लैट/रूम/हाउस नंबर (Flat/House No.)" required>
+    <input type="text" id="custVillage" placeholder="गांव/शहर का नाम (Village/City Name)" required>
+    <input type="text" id="custDistrict" placeholder="जिला (District)" required>
+    
+    <select id="custState" required>
+        <option value="">राज्य चुनें (Select State)</option>
+        <option value="AP">आंध्र प्रदेश (Andhra Pradesh)</option>
+        <option value="AR">अरुणाचल प्रदेश (Arunachal Pradesh)</option>
+        <option value="AS">असम (Assam)</option>
+        <option value="BR">बिहार (Bihar)</option>
+        <option value="CT">छत्तीसगढ़ (Chhattisgarh)</option>
+        <option value="GA">गोवा (Goa)</option>
+        <option value="GJ">गुजरात (Gujarat)</option>
+        <option value="HR">हरियाणा (Haryana)</option>
+        <option value="HP">हिमाचल प्रदेश (Himachal Pradesh)</option>
+        <option value="JH">झारखंड (Jharkhand)</option>
+        <option value="KA">कर्नाटक (Karnataka)</option>
+        <option value="KL">केरल (Kerala)</option>
+        <option value="MP">मध्य प्रदेश (Madhya Pradesh)</option>
+        <option value="MH">महाराष्ट्र (Maharashtra)</option>
+        <option value="MN">मणिपुर (Manipour)</option>
+        <option value="ML">मेघालय (Meghalaya)</option>
+        <option value="MZ">मिजोरम (Mizoram)</option>
+        <option value="NL">नागालैंड (Nagaland)</option>
+        <option value="OR">ओडिशा (Odisha)</option>
+        <option value="PB">पंजाब (Punjab)</option>
+        <option value="RJ">राजस्थान (Rajasthan)</option>
+        <option value="SK">सिक्किम (Sikkim)</option>
+        <option value="TN">तमिलनाडु (Tamil Nadu)</option>
+        <option value="TS">तेलंगाना (Telangana)</option>
+        <option value="TR">त्रिपुरा (Tripura)</option>
+        <option value="UP">उत्तर प्रदेश (Uttar Pradesh)</option>
+        <option value="UK">उत्तराखंड (Uttarakhand)</option>
+        <option value="WB">पश्चिम बंगाल (West Bengal)</option>
+        <option value="AN">अंडमान और निकोबार द्वीप समूह (A&N Islands)</option>
+        <option value="CH">चंडीगढ़ (Chandigarh)</option>
+        <option value="DN">दादरा और नगर हवेली और दमन और दीव (DNH & DD)</option>
+        <option value="DL">दिल्ली (Delhi/NCT)</option>
+        <option value="JK">जम्मू और कश्मीर (Jammu and Kashmir)</option>
+        <option value="LD">लक्षद्वीप (Lakshadweep)</option>
+        <option value="LA">लद्दाख (Ladakh)</option>
+        <option value="PY">पुडुचेरी (Puducherry)</option>
+    </select>
+    <input type="text" id="custPincode" placeholder="पिन कोड (Pincode)" required>
+    
+    <button id="confirmOrder" class="action-btn" style="width: 100%;">ऑर्डर कन्फर्म करें (Confirm Order)</button>
+    <button onclick="closeModal('orderFormModal')" class="action-btn close-btn" style="width: 100%; margin-top: 10px;">बंद करें (Close)</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="adminPanelModal">
+  <div class="form-box" id="loginBox">
+    <h3>🔒 एडमिन लॉगिन (Admin Login)</h3>
+    <input type="password" id="adminPass" placeholder="पासवर्ड डालिए (Password)">
+    <button id="loginBtn" class="action-btn">लॉगिन (Login)</button>
+    <button onclick="closeModal('adminPanelModal')" class="action-btn close-btn">बंद करें (Close)</button>
+  </div>
+  
+  <div class="form-box" id="adminMenu" style="display:none;">
+    <h3>👑 Admin Control (मालिक/Creator)</h3>
+    <p>डेटा अब **हमेशा के लिए सेव** रहेगा।</p>
+    <button id="printOrders" class="action-btn">🧾 नए ऑर्डर्स प्रिंट करें (Print New Orders)</button><br>
+    <button id="updateOrderStatusBtn" class="action-btn">🔄 ऑर्डर की स्थिति बदलें (Update Order Status)</button><br>
+    <button id="catalogSettingsBtn" class="action-btn" onclick="openAdminCatalogModal()">📝 बल्क कैटलॉग मैनेज करें (Manage Bulk Catalog)</button><br>
+    <button id="addProdBtn" class="action-btn">📦 प्रोडक्ट जोड़ें/अपलोड करें (Add Product with Photo)</button><br>
+    <button id="delProdBtn" class="action-btn">❌ प्रोडक्ट हटाएं (Delete Product)</button><br>
+    <button id="removeOrderBtn" class="action-btn" style="background: #9C27B0;">🗑️ ऑर्डर हटाएं (Remove Order)</button><br>
+    <button onclick="adminLogout()" class="action-btn close-btn">🚪 लॉगआउट (Logout)</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="adminCatalogModal">
+    <div class="form-box">
+        <h3>📝 बल्क कैटलॉग मैनेज करें (Manage Bulk Catalog)</h3>
+        <p>यह सूची स्मार्ट सर्च और Buy Product List के लिए है।</p>
+        <input type="text" id="newCatProdName" placeholder="उत्पाद का नाम (हिंदी/English)" required>
+        <input type="number" id="newCatProdPrice" placeholder="कीमत (₹) प्रति यूनिट" required>
+        
+        <select id="newCatProdUnit" required>
+            <option value="Kg">Kg (किलोग्राम)</option>
+            <option value="Ltr">Ltr (लीटर)</option>
+            <option value="Piece">Piece (पीस)</option>
+        </select>
+
+        <input type="text" id="newCatProdAliases" placeholder="सर्च के लिए शब्द (e.g., sugar, cheeni) - कॉमा से अलग करें" value="">
+
+        <button id="confirmAddCatalogProd" class="action-btn" style="background:var(--admin-color);">कैटलॉग में जोड़ें (Add to Catalog)</button>
+        <button id="removeCatProdBtn" class="action-btn" style="background:#D32F2F;">❌ कैटलॉग प्रोडक्ट हटाएं (Delete Catalog Item)</button>
+        <button onclick="closeModal('adminCatalogModal')" class="action-btn close-btn">बंद करें (Close)</button>
+        <p style="margin-top: 15px; font-size: 12px; color: #555;">वर्तमान कैटलॉग में आइटम: <span id="catalogCount">0</span></p>
+    </div>
+</div>
+
+<div class="modal-overlay" id="addProductModal">
+    <div class="form-box">
+        <h3>📦 नया प्रोडक्ट अपलोड करें (Upload New Product with Photo)</h3>
+        <p style="font-size: 12px; color: var(--primary-color);">नोट: फोटो भी अब **हमेशा के लिए सेव** रहेगी।</p>
+        <input type="text" id="newProdName" placeholder="उत्पाद का नाम (Product Name)" required>
+        
+        <label style="display:block; text-align:left; font-size:14px; color:#555; margin-top:10px;">📸 प्रोडक्ट फोटो अपलोड करें (Upload Photo)</label>
+        <input type="file" id="newProdFile" accept="image/*" required>
+        <input type="number" id="newProdOriginalPrice" placeholder="मूल कीमत (₹) प्रति यूनिट/पीस" required>
+        
+        <input type="number" id="newProdDiscount" placeholder="डिस्काउंट (%) खुद देंगे (Discount %)" value="0">
+        <select id="newProdUnit" required>
+            <option value="Kg">Kg (किलोग्राम)</option>
+            <option value="Ltr">Ltr (लीटर)</option>
+            <option value="Piece">Piece (पीस)</option>
+        </select>
+        <button id="confirmAddProd" class="action-btn">प्रोडक्ट जोड़ें (Add Product)</button>
+        <button onclick="closeModal('addProductModal')" class="action-btn close-btn">बंद करें (Close)</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="updateStatusModal">
+    <div class="form-box">
+        <h3>🔄 ऑर्डर की स्थिति बदलें (Update Order Status)</h3>
+        <input type="text" id="updateOrderId" placeholder="ऑर्डर ID (e.g., HB101)" required>
+        <select id="newStatusSelector" required>
+            <option value="">नई स्थिति चुनें</option>
+            <option value="New Order">New Order (नया ऑर्डर)</option>
+            <option value="🚚 डिलीवरी के लिए निकला">🚚 Out for Delivery (डिलीवरी के लिए निकला)</option>
+            <option value="✅ पूरा हुआ">✅ Completed (पूरा हुआ)</option>
+            <option value="❌ कैंसिल">❌ Cancelled (कैंसिल)</option>
+        </select>
+        <button id="confirmStatusUpdate" class="action-btn" style="background:#FF9800;">स्थिति अपडेट करें</button>
+        <button onclick="closeModal('updateStatusModal')" class="action-btn close-btn">बंद करें (Close)</button>
+    </div>
+</div>
+<footer>© 2025 SHREE RAM MARKET | डेटा अब **स्थायी रूप से** आपके ब्राउज़र में सेव रहेगा।</footer>
+
+<script>
+/* ================== 🔒 एडमिन पासवर्ड्स 🔒 ================== */
+const MAIN_ADMIN_PASS = "fhfi439"; // मुख्य एडमिन पैनल
+const CATALOG_ADMIN_PASS = "igu568"; // ग्रोसरी कैटलॉग मैनेजमेंट
+
+/* ================== 📦 डमी डेटाबेस सिमुलेशन और स्थायित्व लॉजिक 📦 ================== */
+let products = []; 
+let orders = [];
+let productCatalog = []; 
+let smartBulkList = []; 
+let currentOrderingProduct = null;
+let currentOrderType = 'single'; 
+
+const productContainer = document.getElementById("productContainer");
+
+// --- Default Data (अगर localStorage खाली हो तो) ---
+const DEFAULT_CATALOG = [
+    { id: 1001, name: "चीनी (Sugar)", unit: "Kg", price: 42.00, aliases: ["sugar", "cheeni", "chini"] },
+    { id: 1003, name: "आटा (Atta)", unit: "Kg", price: 35.00, aliases: ["atta", "wheat", "aata"] },
+    { id: 1006, name: "पनीर (Paneer)", unit: "Kg", price: 320.00, aliases: ["paneer", "cheese"] },
+    { id: 1007, name: "दूध (Milk - 1 Ltr)", unit: "Ltr", price: 60.00, aliases: ["milk", "doodh"] },
+    { id: 1009, name: "दाल (Daal - Arhar)", unit: "Kg", price: 110.00, aliases: ["daal", "pulse", "arhar"] },
+    { id: 1010, name: "चाय पत्ती (Tea)", unit: "Kg", price: 300.00, aliases: ["tea", "chai", "patti"] }
+];
+const DEFAULT_ORDERS = [
+    { id: 'HB101', product: 'Sample Product 1 (Demo)', qty: '10 Kg', name: 'राम सिंह', mobile: '9876543210', address: 'पता का नमूना', total: 322.00, status: '🚚 डिलीवरी के लिए निकला' },
+];
+
+// ⭐ NEW: डेटा को लोकल स्टोरेज में सेव करने का फंक्शन
+function saveData() {
+    localStorage.setItem('shreeram_products', JSON.stringify(products));
+    localStorage.setItem('shreeram_catalog', JSON.stringify(productCatalog));
+    localStorage.setItem('shreeram_orders', JSON.stringify(orders));
+}
+
+// ⭐ NEW: डेटा को लोकल स्टोरेज से लोड करने का फंक्शन
+function loadData() {
+    const storedProducts = localStorage.getItem('shreeram_products');
+    const storedCatalog = localStorage.getItem('shreeram_catalog');
+    const storedOrders = localStorage.getItem('shreeram_orders');
+
+    // 1. Products Load
+    if (storedProducts) {
+        products = JSON.parse(storedProducts);
+    } 
+
+    // 2. Catalog Load (Use default if nothing is stored)
+    if (storedCatalog) {
+        productCatalog = JSON.parse(storedCatalog);
+    } else {
+        productCatalog = DEFAULT_CATALOG;
+        saveData(); // Save defaults once
+    }
+
+    // 3. Orders Load (Use default if nothing is stored)
+    if (storedOrders) {
+        orders = JSON.parse(storedOrders);
+    } else {
+        orders = DEFAULT_ORDERS;
+        saveData(); // Save defaults once
+    }
+}
+
+
+/* ================== स्मार्ट लिस्ट फंक्शन (No Change) ================== */
+function calculateTotal() {
+    let grandTotal = 0;
+    smartBulkList.forEach(item => {
+        const product = productCatalog.find(p => p.id === item.productID);
+        if (product && item.qty > 0) {
+            item.total = product.price * item.qty;
+            grandTotal += item.total;
+        } else {
+             item.total = 0;
+        }
+    });
+    document.getElementById("grandTotalDisplay").innerText = `₹${grandTotal.toFixed(2)}`;
+    return grandTotal;
+}
+
+function renderSmartList() {
+    const listContainer = document.getElementById("bulkOrderList");
+    const existingItems = Array.from(listContainer.querySelectorAll('.bulk-item'));
+    
+    existingItems.forEach(div => {
+        const productID = parseInt(div.getAttribute('data-id'));
+        if (!smartBulkList.some(item => item.productID === productID)) {
+            div.style.opacity = '0';
+            div.style.maxHeight = '0';
+            div.style.padding = '0';
+            div.style.border = 'none';
+            setTimeout(() => div.remove(), 300); 
+        }
+    });
+
+    smartBulkList.forEach(item => {
+        const product = productCatalog.find(p => p.id === item.productID);
+        if (!product) return; 
+
+        let div = listContainer.querySelector(`.bulk-item[data-id="${product.id}"]`);
+
+        if (!div) {
+            div = document.createElement('div');
+            div.classList.add('bulk-item');
+            div.setAttribute('data-id', product.id);
+            div.style.opacity = '0'; 
+            div.style.maxHeight = '0';
+            div.style.padding = '0 0'; 
+
+            div.innerHTML = `
+                <span class="item-name" title="${product.name}">${product.name.length > 25 ? product.name.substring(0, 25) + '...' : product.name}</span>
+                <div class="item-controls">
+                    <input 
+                        type="number" 
+                        min="1" 
+                        value="${item.qty}" 
+                        oninput="updateQuantity(${product.id}, this.value)"
+                        style="width: 60px;"
+                    >
+                    <span class="unit-display">${product.unit}</span>
+                    <span class="item-price" style="font-weight:600; min-width: 60px;">₹${(product.price * item.qty).toFixed(2)}</span>
+                    <button class="delete-btn" onclick="removeItemFromList(${product.id})">✖</button>
+                </div>
+            `;
+            listContainer.appendChild(div);
+            setTimeout(() => { 
+                div.style.opacity = '1'; 
+                div.style.maxHeight = '60px'; 
+                div.style.padding = '10px 0'; 
+            }, 10);
+            
+        } else {
+            div.querySelector('input[type="number"]').value = item.qty;
+            div.querySelector('.item-price').innerText = `₹${(product.price * item.qty).toFixed(2)}`;
+        }
+    });
+
+    if (smartBulkList.length === 0) {
+        document.getElementById("emptyListMsg").style.display = 'block';
+        document.getElementById("proceedToOrderBtn").disabled = true;
+        document.getElementById("proceedToOrderBtn").style.opacity = 0.5;
+    } else {
+        document.getElementById("emptyListMsg").style.display = 'none';
+        document.getElementById("proceedToOrderBtn").disabled = false;
+        document.getElementById("proceedToOrderBtn").style.opacity = 1;
+    }
+
+    calculateTotal();
+}
+
+function showSuggestions() {
+    const input = document.getElementById("smartSearchInput").value.toLowerCase().trim();
+    const suggestionsBox = document.getElementById("searchSuggestions");
+    suggestionsBox.innerHTML = "";
+
+    if (input.length < 2) return;
+
+    const filtered = productCatalog.filter(p => 
+        p.name.toLowerCase().includes(input) || 
+        p.aliases.some(alias => alias.includes(input))
+    ).filter(p => !smartBulkList.some(item => item.productID === p.id)); 
+
+    if (filtered.length > 0) {
+        filtered.forEach(p => {
+            const item = document.createElement('div');
+            item.classList.add('suggestion-item');
+            item.innerText = `${p.name} (${p.unit} में ₹${p.price.toFixed(2)})`; 
+            item.onclick = () => addItemToList(p.id);
+            suggestionsBox.appendChild(item);
+        });
+        suggestionsBox.style.display = 'block';
+    } else {
+         suggestionsBox.innerHTML = '<div class="suggestion-item" style="color:#999;">कोई प्रोडक्ट नहीं मिला या पहले से जोड़ा गया है।</div>';
+         suggestionsBox.style.display = 'block';
+    }
+}
+
+function addItemToList(productID) {
+    const product = productCatalog.find(p => p.id === productID);
+    if (!product || smartBulkList.some(item => item.productID === productID)) return;
+
+    smartBulkList.push({ productID: productID, qty: 1, total: product.price });
+    document.getElementById("smartSearchInput").value = ''; 
+    document.getElementById("searchSuggestions").innerHTML = '';
+    document.getElementById("searchSuggestions").style.display = 'none';
+    renderSmartList(); 
+}
+
+function updateQuantity(productID, newQty) {
+    const qty = parseInt(newQty);
+    if (isNaN(qty) || qty <= 0) {
+        const inputElement = document.querySelector(`.bulk-item[data-id="${productID}"] input[type="number"]`);
+        if (inputElement) inputElement.value = 1;
+        
+        const item = smartBulkList.find(i => i.productID === productID);
+        if (item) item.qty = 1;
+    } else {
+        const item = smartBulkList.find(i => i.productID === productID);
+        if (item) item.qty = qty;
+    }
+    renderSmartList(); 
+}
+
+function removeItemFromList(productID) {
+    smartBulkList = smartBulkList.filter(item => item.productID !== productID);
+    renderSmartList(); 
+}
+
+/* ================== 📝 Buy Product List (Free-Form) Calculator (No Change) ================== */
+
+function calculateFreeFormTotal() {
+    const listText = document.getElementById('freeFormList').value;
+    const lines = listText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    let grandTotal = 0;
+    const regex = /(\d+\.?\d*)\s*(kg|g|ltr|ml|piece|pc|pcs|pce|pces)?\s*(.*)/i;
+
+    lines.forEach(line => {
+        const match = line.match(regex);
+        let qty = 1;
+        let unitText = 'Piece';
+        let prodName = line;
+
+        if (match) {
+            qty = parseFloat(match[1]) || 1;
+            unitText = (match[2] || 'Piece').toLowerCase();
+            prodName = match[3] ? match[3].trim() : line;
+        }
+
+        prodName = prodName.toLowerCase().replace(/powder|packet|pouch|box|tin|bottle|pack|purity/g, '').trim();
+
+        let bestMatch = null;
+        let bestScore = 0;
+
+        productCatalog.forEach(p => {
+            const catalogName = p.name.toLowerCase();
+            const keywords = [...p.aliases, catalogName];
+            let currentScore = 0;
+
+            keywords.forEach(keyword => {
+                if (prodName.includes(keyword) && keyword.length > 2) {
+                    currentScore = Math.max(currentScore, keyword.length); 
+                }
+            });
+            
+            if (currentScore > bestScore) {
+                bestScore = currentScore;
+                bestMatch = p;
+            }
+        });
+
+        if (bestMatch) {
+            let convertedQty = qty;
+            const targetUnit = bestMatch.unit.toLowerCase();
+            
+            const isGram = unitText.startsWith('g');
+            const isML = unitText.startsWith('ml');
+            const isPiece = unitText.startsWith('piece') || unitText.startsWith('pc');
+
+            if (targetUnit === 'kg' && isGram) {
+                convertedQty = qty / 1000;
+            } else if (targetUnit === 'ltr' && isML) {
+                convertedQty = qty / 1000;
+            } else if (targetUnit === 'piece' && !isPiece) {
+                convertedQty = qty; 
+            }
+            
+            const lineTotal = bestMatch.price * convertedQty;
+            grandTotal += lineTotal;
+        }
+    });
+
+    document.getElementById('freeFormTotalDisplay').innerText = `₹${grandTotal.toFixed(2)}`
+    return grandTotal;
+}
+
+
+/* ================== ⬆️ ऑर्डर लॉजिक (Updated to call saveData) ⬆️ ================== */
+function openFinalOrderModal(type) {
+    currentOrderType = type;
+    document.getElementById('modalPriceRow').style.display = 'none';
+    document.getElementById('bulkOrderSummaryInModal').style.display = 'none';
+    document.getElementById('freeFormListSummaryInModal').style.display = 'none';
+
+    if (type === 'smart') {
+        const total = calculateTotal();
+        if (total <= 0) {
+            return alert("कृपया अपनी लिस्ट में कुछ आइटम जोड़ें जिनकी मात्रा 1 या उससे अधिक हो।");
+        }
+        
+        document.getElementById('bulkOrderSummaryInModal').style.display = 'block';
+        document.getElementById("orderTitle").innerText = "बल्क ग्रोसरी ऑर्डर (Bulk Grocery Order)";
+        document.getElementById("modalBulkTotalDisplay").innerText = `₹${total.toFixed(2)}`;
+
+        const detailsList = document.getElementById("bulkOrderDetailsList");
+        const productNameLines = [];
+        
+        detailsList.innerHTML = smartBulkList.map(item => {
+            const product = productCatalog.find(p => p.id === item.productID);
+            const line = `${product.name}: ${item.qty} ${product.unit} (₹${item.total.toFixed(2)})`;
+            productNameLines.push(line);
+            return `<p style="margin: 5px 0; font-size: 14px;">${line}</p>`;
+        }).join('');
+
+        currentOrderingProduct = {
+            id: 'SMART_BULK',
+            name: productNameLines.join('\n'), 
+            originalPrice: total,
+            discount: 0,
+            unit: 'List' 
+        };
+
+    } else if (type === 'freeform') {
+        const freeFormListText = document.getElementById('freeFormList').value.trim();
+        const calculatedTotal = calculateFreeFormTotal(); 
+        
+        if (freeFormListText.length === 0) {
+            return alert("आपकी खरीददारी सूची खाली है। कृपया आइटम लिखें।");
+        }
+        
+        document.getElementById('freeFormListSummaryInModal').style.display = 'block';
+        document.getElementById("orderTitle").innerText = "खरीददारी सूची ऑर्डर (Free-Form Product List)";
+        document.getElementById("modalFreeFormListDisplay").innerText = freeFormListText;
+        
+        document.getElementById('modalFreeFormPriceDisplay').innerText = `₹${calculatedTotal.toFixed(2)}`;
+        
+        const tbdMsg = document.getElementById('freeFormTBDMessage');
+        tbdMsg.style.display = calculatedTotal > 0 ? 'block' : 'block'; 
+        
+        currentOrderingProduct = {
+            id: 'FREE_FORM',
+            name: freeFormListText, 
+            originalPrice: calculatedTotal, 
+            discount: 0,
+            unit: 'List' 
+        };
+    }
+
+    document.getElementById("orderFormModal").style.display = "flex";
+}
+
+
+document.getElementById("confirmOrder").onclick=()=>{
+  const name = document.getElementById("custName").value;
+  const mobile = document.getElementById("custMobile").value;
+  const flat = document.getElementById("custFlat").value;
+  const village = document.getElementById("custVillage").value;
+  const district = document.getElementById("custDistrict").value;
+  const pincode = document.getElementById("custPincode").value;
+  const state = document.getElementById("custState").value;
+  
+  if (!name || !mobile || !flat || !village || !district || !pincode || !state) {
+      return alert("कृपया ऑर्डर फॉर्म में सभी आवश्यक जानकारी (नाम, मोबाइल, पता, आदि) भरें!");
+  }
+
+  let total = 0;
+  let productName = "";
+  let qtyUnit = "";
+  let status = "";
+  let orderPrefix = 'SRM'; // Unique prefix for new orders
+
+  if (currentOrderType === 'single') {
+    const qty = document.getElementById("custQuantity").value;
+    const unit = document.getElementById("unitSelector").value;
+    if (!qty || parseFloat(qty) <= 0) return alert("कृपया सही मात्रा (Quantity) दर्ज करें!");
+
+    const price = (currentOrderingProduct.originalPrice * (100 - currentOrderingProduct.discount) / 100);
+    total = (price * parseFloat(qty)).toFixed(2);
+    productName = currentOrderingProduct.name;
+    qtyUnit = `${qty} ${unit}`;
+    status = 'New Order';
+    
+  } else if (currentOrderType === 'smart') {
+    total = currentOrderingProduct.originalPrice.toFixed(2);
+    productName = "स्मार्ट ग्रोसरी लिस्ट:\n" + currentOrderingProduct.name;
+    qtyUnit = `${smartBulkList.length} Items (Total: ₹${total})`;
+    status = 'New Order';
+
+    smartBulkList = [];
+    renderSmartList();
+
+  } else if (currentOrderType === 'freeform') {
+    total = currentOrderingProduct.originalPrice.toFixed(2); 
+    productName = "खरीददारी सूची:\n" + currentOrderingProduct.name;
+    const totalLines = currentOrderingProduct.name.split('\n').filter(line => line.trim().length > 0).length;
+    
+    if (parseFloat(total) > 0) {
+        qtyUnit = `${totalLines} Lines (Price: ₹${total} Estimated)`;
+        status = 'New Order (Price Estimated)';
+    } else {
+        qtyUnit = `${totalLines} Lines (Price TBD)`;
+        status = 'New Order (Price TBD)';
+    }
+    
+    document.getElementById('freeFormList').value = '';
+    document.getElementById('freeFormTotalDisplay').innerText = `₹0.00`; 
+  }
+  
+  // Create a unique ID: SRM + timestamp (or order count for simplicity)
+  const newOrderId = orderPrefix + (orders.length + 101);
+  const fullAddress = `फ्लैट/रूम: ${flat}, गाँव: ${village}, जिला: ${district}, पिन: ${pincode}, राज्य: ${state}`;
+  
+
+  orders.unshift({ 
+    id: newOrderId, 
+    product: productName, 
+    qty: qtyUnit, 
+    name: name, 
+    mobile: mobile,
+    address: fullAddress,
+    total: (parseFloat(total) > 0 ? parseFloat(total).toFixed(2) : 'TBD'), 
+    status: status 
+  });
+  
+  // ⭐ NEW: Save the updated orders data
+  saveData(); 
+  
+  let orderConfirmMsg = `✅ बधाई! आपका ऑर्डर ${newOrderId} कन्फर्म हुआ। \nउत्पाद: ${productName.substring(0, 50)}...\nनाम: ${name}\nमोबाइल: ${mobile}\n`;
+  
+  if (parseFloat(total) > 0) {
+      orderConfirmMsg += `अनुमानित कीमत: ₹${total}\n`;
+      if (currentOrderType !== 'single') {
+        orderConfirmMsg += `(नोट: यह Buy Product List का अनुमानित मूल्य है। अंतिम मूल्य डिलीवरी के समय कन्फर्म किया जाएगा।)\n`;
+      }
+  } else {
+      orderConfirmMsg += `कुल कीमत: डिलीवरी के समय बताई जाएगी।`;
+  }
+  alert(orderConfirmMsg);
+  
+  closeModal('orderFormModal');
+  loadMyOrders(); 
+};
+
+/* ================== 🔑 एडमिन लॉजिक (Updated to call saveData) 🔑 ================== */
+function openAdminCatalogModal(){
+    const pass = prompt("ग्रोसरी कैटलॉग एडमिन पासवर्ड डालें:");
+    if (pass !== CATALOG_ADMIN_PASS) {
+        return alert("❌ गलत पासवर्ड! आप कैटलॉग मैनेज नहीं कर सकते।");
+    }
+    closeModal('adminPanelModal'); 
+    document.getElementById("catalogCount").innerText = productCatalog.length;
+    document.getElementById("adminCatalogModal").style.display="flex";
+}
+
+document.getElementById("confirmAddCatalogProd").onclick=()=>{
+  const name = document.getElementById("newCatProdName").value.trim();
+  const price = parseFloat(document.getElementById("newCatProdPrice").value);
+  const unit = document.getElementById("newCatProdUnit").value;
+  const aliasesString = document.getElementById("newCatProdAliases").value.toLowerCase();
+  
+  if (!name || isNaN(price) || price <= 0) {
+      return alert("कृपया नाम और सही कीमत भरें! (Name and correct price are required!)");
+  }
+  
+  const aliases = aliasesString.split(',').map(a => a.trim()).filter(a => a.length > 0);
+  aliases.unshift(name.toLowerCase().trim());
+
+  if(productCatalog.some(p => p.name.trim().toLowerCase() === name.toLowerCase().trim())){
+      return alert(`❌ यह प्रोडक्ट (${name}) पहले से कैटलॉग में मौजूद है!`);
+  }
+
+  const newId = productCatalog.length > 0 ? productCatalog[productCatalog.length - 1].id + 1 : 1011;
+  
+  productCatalog.push({ id: newId, name, unit, price, aliases });
+  
+  // ⭐ NEW: Save the updated catalog data
+  saveData();
+  
+  alert(`✅ कैटलॉग में नया प्रोडक्ट जोड़ा गया: ${name} (कीमत: ₹${price}/${unit}) \nडेटा सेव हो गया है!`);
+  
+  document.getElementById("newCatProdName").value = '';
+  document.getElementById("newCatProdPrice").value = '';
+  document.getElementById("newCatProdAliases").value = '';
+  document.getElementById("catalogCount").innerText = productCatalog.length;
+};
+
+document.getElementById("removeCatProdBtn").onclick=()=>{
+    const name=prompt("वह प्रोडक्ट नाम लिखें जिसे कैटलॉग से हटाना है: (Enter Product Name to delete from Catalog):");
+    if (!name) return;
+    
+    const initialLength = productCatalog.length;
+    productCatalog = productCatalog.filter(p => p.name.toLowerCase().trim() !== name.toLowerCase().trim());
+    
+    if(productCatalog.length < initialLength){
+        // ⭐ NEW: Save the updated catalog data
+        saveData();
+        alert(`कैटलॉग प्रोडक्ट हटाया गया: ${name} ❌ (डेटा सेव हो गया है!)`);
+        document.getElementById("catalogCount").innerText = productCatalog.length;
+    } else alert("प्रोडक्ट नाम कैटलॉग में नहीं मिला! (Product name not found!)");
+};
+
+// ⭐ NEW: ऑर्डर स्टेटस बदलने का फंक्शन
+document.getElementById("updateOrderStatusBtn").onclick=()=>{
+    closeModal('adminPanelModal');
+    document.getElementById('updateStatusModal').style.display = 'flex';
+};
+
+document.getElementById("confirmStatusUpdate").onclick=()=>{
+    const orderId = document.getElementById("updateOrderId").value.trim();
+    const newStatus = document.getElementById("newStatusSelector").value;
+    
+    if (!orderId || !newStatus) return alert("कृपया ऑर्डर ID और नई स्थिति चुनें!");
+    
+    const orderIndex = orders.findIndex(o => o.id.toUpperCase() === orderId.toUpperCase());
+    
+    if (orderIndex === -1) return alert(`ऑर्डर ID ${orderId} नहीं मिला!`);
+
+    orders[orderIndex].status = newStatus;
+    
+    // ⭐ NEW: Save the updated orders data
+    saveData();
+    
+    alert(`ऑर्डर ${orderId} की स्थिति अपडेट हुई: ${newStatus} ✅ (डेटा सेव हो गया है!)`);
+    document.getElementById("updateOrderId").value = '';
+    closeModal('updateStatusModal');
+    loadMyOrders();
+};
+
+
+/* ================== सामान्य एडमिन और अन्य फंक्शन ================== */
+
+
+function loadProducts(){
+  productContainer.innerHTML="";
+  products.forEach((p)=>{
+    const discountedPrice = (p.originalPrice * (100 - p.discount) / 100).toFixed(2);
+    const div=document.createElement("div");
+    div.classList.add("product");
+    div.setAttribute('data-product-id', p.id);
+    // ⭐ NEW: p.img में अब Base64 स्ट्रिंग होगी
+    const imgSrc = p.img || "https://via.placeholder.com/200"; 
+
+    div.innerHTML=`
+      <img src="${imgSrc}" alt="${p.name}" onclick="openOrderModal(${p.id})">
+      <div class="product-details">
+        <h4 onclick="openOrderModal(${p.id})" title="${p.name}">${p.name}</h4>
+        <div class="price-box">
+          <span class="original-price">₹${p.originalPrice.toFixed(2)}/${p.unit}</span>
+          <span class="discounted-price" onclick="alert('यह उत्पाद ₹${discountedPrice} का है, जिस पर ${p.discount}% डिस्काउंट है।')">₹${discountedPrice}/${p.unit}</span>
+        </div>
+        ${p.discount > 0 ? `<div class="discount-badge">${p.discount}% OFF</div>` : ''}
+        <button class="order-btn" onclick="openOrderModal(${p.id})">ऑर्डर करें (Order Now)</button>
+      </div>`;
+    productContainer.appendChild(div);
+  });
+}
+
+
+function loadMyOrders() {
+    const container = document.getElementById("myOrdersContainer");
+    container.innerHTML = ""; 
+    
+    if (orders.length === 0) {
+        container.innerHTML = '<p style="text-align: center; margin-top: 20px; color: #999;">आपका कोई ऑर्डर नहीं है।</p>';
+        return;
+    }
+
+    orders.forEach(order => {
+        const orderBox = document.createElement('div');
+        orderBox.classList.add('order-summary');
+        orderBox.style.borderLeftColor = order.status.includes('New') ? 'var(--primary-color)' : (order.status.includes('Delivery') ? '#FF9800' : (order.status.includes('Complete') ? 'var(--secondary-color)' : '#D32F2F'));
+        orderBox.innerHTML = `
+            <h4>ऑर्डर ID: ${order.id}</h4>
+            <p>उत्पाद (Product): <strong>${order.product.replace(/\n/g, '<br>')}</strong></p>
+            <p>मात्रा (Quantity): <strong>${order.qty}</strong></p>
+            <p>कुल कीमत (Total Price): <strong>${order.total !== 'TBD' ? '₹' + parseFloat(order.total).toFixed(2) : 'कीमत बाद में बताई जाएगी (Price TBD)'}</strong></p>
+            <p>स्थिति (Status): <strong>${order.status}</strong></p>
+        `;
+        container.appendChild(orderBox);
+    });
+}
+function closeModal(id){
+    document.getElementById(id).style.display = 'none';
+    if(id === 'orderFormModal'){
+        document.getElementById('modalPriceRow').style.display = 'block';
+        document.getElementById('singleQtyUnitSelector').style.display = 'inline';
+        document.getElementById('bulkOrderSummaryInModal').style.display = 'none';
+        document.getElementById('freeFormListSummaryInModal').style.display = 'none';
+        currentOrderType = 'single';
+    }
+}
+function adminLogout(){
+  closeModal('adminPanelModal');
+  document.getElementById("loginBox").style.display="block";
+  document.getElementById("adminMenu").style.display="none";
+}
+document.getElementById("loginBtn").onclick=()=>{
+  const pass=document.getElementById("adminPass").value;
+  if(pass===MAIN_ADMIN_PASS){ 
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("adminMenu").style.display="block";
+  } else alert("गलत पासवर्ड! (Wrong Password!)");
+};
+document.getElementById("adminIcon").onclick=()=>{
+  document.getElementById("adminPanelModal").style.display="flex";
+};
+function openOrderModal(productId){
+  const product = products.find(p => p.id === productId);
+  if (!product) return alert("उत्पाद नहीं मिला! (Product not found!)");
+  currentOrderingProduct = product;
+  currentOrderType = 'single';
+  
+  document.getElementById('modalPriceRow').style.display = 'flex';
+  document.getElementById('singleQtyUnitSelector').style.display = 'inline';
+  document.getElementById('bulkOrderSummaryInModal').style.display = 'none';
+  document.getElementById('freeFormListSummaryInModal').style.display = 'none';
+
+  const discountedPrice = (product.originalPrice * (100 - product.discount) / 100).toFixed(2);
+  document.getElementById("orderTitle").innerText = product.name + " - ऑर्डर फॉर्म";
+  document.getElementById("modalPriceDisplay").innerText = `₹${discountedPrice} / ${product.unit}`;
+  document.getElementById("custQuantity").value = 1;
+  document.getElementById("unitSelector").innerHTML = `<option value="${product.unit}">${product.unit}</option>`;
+  document.getElementById("unitSelector").value = product.unit;
+  document.getElementById("unitSelector").disabled = true; 
+  document.getElementById("orderFormModal").style.display="flex";
+}
+
+document.getElementById("addProdBtn").onclick=()=>{
+    closeModal('adminPanelModal');
+    document.getElementById('addProductModal').style.display = 'flex';
+};
+document.getElementById("confirmAddProd").onclick=()=>{
+  const name = document.getElementById("newProdName").value;
+  const fileInput = document.getElementById("newProdFile");
+  const price = parseFloat(document.getElementById("newProdOriginalPrice").value);
+  const discount = parseInt(document.getElementById("newProdDiscount").value) || 0;
+  const unit = document.getElementById("newProdUnit").value;
+  
+  if (fileInput.files.length === 0) return alert("कृपया प्रोडक्ट फोटो अपलोड करें! (Please upload product photo!)");
+  if (!name || isNaN(price) || price <= 0) return alert("नाम और सही कीमत ज़रूरी है! (Name and correct price are required!)");
+  
+  const file = fileInput.files[0];
+  
+  // ⭐ NEW: Convert file to Base64 for permanent storage
+  const reader = new FileReader();
+  reader.onload = function(e) {
+      const base64Img = e.target.result; // Base64 string is the persistent URL
+      
+      products.unshift({
+          id: Date.now(), 
+          name, 
+          originalPrice: price, 
+          discount, 
+          unit, 
+          img: base64Img // Store Base64
+      });
+      
+      // ⭐ NEW: Save the updated products data
+      saveData();
+      loadProducts();
+      alert(`नया प्रोडक्ट जोड़ा गया: ${name} ✅ \nडेटा सेव हो गया है!`);
+      closeModal('addProductModal');
+      document.getElementById("newProdName").value = '';
+      document.getElementById("newProdFile").value = '';
+      document.getElementById("newProdOriginalPrice").value = '';
+      document.getElementById("newProdDiscount").value = 0;
+  };
+  reader.readAsDataURL(file); // Read as data URL (Base64)
+};
+
+
+document.getElementById("delProdBtn").onclick=()=>{
+  const name=prompt("वह प्रोडक्ट नाम लिखें जिसे हटाना है: (Enter Product Name to delete):");
+  if (!name) return;
+  
+  const initialLength = products.length;
+  products = products.filter(p => p.name !== name);
+  
+  if(products.length < initialLength){
+    // ⭐ NEW: Save the updated products data
+    saveData(); 
+    loadProducts();
+    alert(`प्रोडक्ट हटाया गया: ${name} ❌ (डेटा सेव हो गया है!)`);
+  } else alert("प्रोडक्ट नाम सूची में नहीं मिला! (Product name not found!)");
+};
+
+document.getElementById("removeOrderBtn").onclick=()=>{
+    const orderId = prompt("वह ऑर्डर ID (जैसे SRM101) लिखें जिसे हटाना है: (Enter Order ID to remove):");
+    if (!orderId) return;
+    const initialLength = orders.length;
+    orders = orders.filter(o => o.id.toUpperCase() !== orderId.toUpperCase());
+    
+    if(orders.length < initialLength){
+        // ⭐ NEW: Save the updated orders data
+        saveData();
+        alert(`ऑर्डर हटाया गया: ${orderId} ❌ (डेटा सेव हो गया है!)`);
+        loadMyOrders(); 
+    } else alert("ऑर्डर ID सूची में नहीं मिला! (Order ID not found!)");
+};
+
+document.getElementById("printOrders").onclick=()=>{
+  closeModal('adminPanelModal');
+  const newOrders = orders.filter(o => o.status.includes('New Order'));
+  if (newOrders.length === 0) {
+      return alert("कोई नया ऑर्डर प्रिंट करने के लिए नहीं है! (No new orders to print!)");
+  }
+  const printWindow = window.open('', '', 'height=700,width=900');
+  let orderHtml = `
+    <html>
+    <head><title>SHREE RAM MARKET - Order Print</title>
+    <style>
+      body{font-family: Arial, sans-serif; padding: 20px;}
+      table{width:100%; border-collapse:collapse; margin-top:20px;} 
+      th,td{border:1px solid #333; padding:10px; text-align:left; font-size:14px;} 
+      th{background:#ff5c33; color:white;}
+      h1{color:#ff5c33; border-bottom: 2px solid #ff5c33; padding-bottom: 5px;}
+      .order-box{border:2px solid #333; padding:15px; margin-bottom:15px; border-radius:8px;}
+      .order-product-list{white-space: pre-wrap; margin-top: 10px; padding: 10px; border: 1px dashed #ccc;}
+    </style>
+    </head>
+    <body>
+    <h1>🧾 SHREE RAM MARKET - नए ऑर्डर्स प्रिंट रिपोर्ट (New Orders Print Report)</h1>
+    <p>कुल नए ऑर्डर्स (Total New Orders): ${newOrders.length}</p>
+    <p>तारीख (Date): ${new Date().toLocaleDateString('hi-IN')}</p>
+    <hr>
+    ${newOrders.map(o => `
+      <div class="order-box">
+        <h3>ऑर्डर ID: ${o.id}</h3>
+        <p><strong>उत्पाद और मात्रा:</strong> ${o.qty}</p>
+        <div class="order-product-list">
+          ${o.product} 
+        </div>
+        <p><strong>कुल कीमत (Total Price):</strong> ${o.total !== 'TBD' ? '₹' + parseFloat(o.total).toFixed(2) : 'कीमत बाद में बताई जाएगी'}</p>
+        <p><strong>ग्राहक (Customer):</strong> ${o.name} | <strong>मोबाइल (Mobile):</strong> ${o.mobile}</p>
+        <p><strong>पता (Address):</strong> ${o.address}</p>
+      </div>
+    `).join('')}
+    <p style="margin-top: 30px; text-align: center;">--- SHREE RAM MARKET ---</p>
+    </body></html>`;
+  printWindow.document.write(orderHtml);
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+};
+
+function showSection(id) {
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.onload = function() {
+  // ⭐ NEW: सबसे पहले डेटा लोड करें
+  loadData(); 
+  
+  loadProducts();
+  loadMyOrders(); 
+  renderSmartList(); 
+  
+  calculateFreeFormTotal(); 
+
+  document.getElementById("catalogCount").innerText = productCatalog.length;
+
+  document.addEventListener('click', (event) => {
+    const suggestionsBox = document.getElementById("searchSuggestions");
+    const searchInput = document.getElementById("smartSearchInput");
+    
+    if (!searchInput.contains(event.target) && !suggestionsBox.contains(event.target)) {
+        suggestionsBox.style.display = 'none';
+    }
+  });
+
+};
+</script>
+
+</body>
+</html>
